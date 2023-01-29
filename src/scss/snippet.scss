@@ -1,0 +1,59 @@
+:root {
+    --hide-answer-filter: contrast(0%) brightness(1.5);
+}
+// Cloze & Inline Card
+%cloze {
+    font-weight: 600;
+    border-radius: 5px;
+}
+%list-card {
+    span[data-linear-editor-text~="true"]:nth-of-type(3) {
+        > span {
+            > span {
+                span.linear-editor-item.whitespace-pre-wrap {
+                    &:not(:hover) {
+                        background-color: white;
+                        filter: var(--hide-answer-filter);
+                        @extend %cloze;
+                    }
+                }
+            }
+        }
+    }
+}
+span.cloze {
+    @extend %cloze;
+    &:not(:hover) {
+        background-color: white;
+        filter: var(--hide-answer-filter);
+        @extend %cloze;
+    }
+}
+span.only_in_answer {
+    > span {
+        &:not(:hover) {
+            background-color: white;
+            filter: var(--hide-answer-filter);
+            @extend %cloze;
+        }
+    }
+}
+span.rem-container--forwards-practice-enabled,
+span.rem-container--forwards-practice-disabled {
+    @extend %list-card;
+}
+// List Card
+div.tree-node--children {
+    .node-card-item {
+        &:hover {
+            filter: unset !important;
+        }
+    }
+    &:not(:hover) {
+        .node-card-item {
+            background-color: white;
+            filter: var(--hide-answer-filter);
+            border-radius: 5px;
+        }
+    }
+}
