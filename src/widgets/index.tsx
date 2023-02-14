@@ -37,7 +37,7 @@ async function onActivate(plugin: ReactRNPlugin) {
   await useTracker(async (reactivePlugin) => {
     const arSetting = await reactivePlugin.settings.getSetting<boolean>("scope");
     arSetting
-      ? await plugin.app.registerCSS("active-recall-untagged", ARCSS)
+      ? await plugin.app.registerCSS("active-recall-untagged", ARTAGGED)
       : await plugin.app.registerCSS("active-recall", ARCSS);
   });
 }
