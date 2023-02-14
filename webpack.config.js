@@ -18,39 +18,35 @@ const fastRefresh = isDevelopment ? new ReactRefreshWebpackPlugin() : null;
 const SANDBOX_SUFFIX = '-sandbox';
 
 const config = {
-  mode: isProd ? 'production' : 'development',
-  entry: glob.sync('./src/widgets/**.tsx').reduce(function (obj, el) {
+  mode: isProd ? "production" : "development",
+  entry: glob.sync("./src/widgets/**.tsx").reduce(function (obj, el) {
     obj[path.parse(el).name] = el;
     obj[path.parse(el).name + SANDBOX_SUFFIX] = el;
     return obj;
   }, {}),
 
   output: {
-    path: resolve(__dirname, 'dist'),
+    path: resolve(__dirname, "dist"),
     filename: `[name].js`,
-    publicPath: '',
+    publicPath: "",
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   module: {
     rules: [
       {
         test: /\.(ts|tsx|jsx|js)?$/,
-        loader: 'esbuild-loader',
+        loader: "esbuild-loader",
         options: {
-          loader: 'tsx',
-          target: 'es2020',
+          loader: "tsx",
+          target: "es2020",
           minify: false,
         },
       },
       {
         test: /\.css$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          { loader: 'css-loader', options: { url: false } },
-          'postcss-loader',
-        ],
+        use: [MiniCssExtractPlugin.loader, { loader: "css-loader", options: { url: false } }, "postcss-loader"],
       },
     ],
   },
@@ -70,25 +66,25 @@ const config = {
       document.body.appendChild(s);
       </script>
     `,
-      filename: 'index.html',
+      filename: "index.html",
       inject: false,
     }),
     new ProvidePlugin({
-      React: 'react',
-      reactDOM: 'react-dom',
+      React: "react",
+      reactDOM: "react-dom",
     }),
     new BannerPlugin({
       banner: (file) => {
-        return !file.chunk.name.includes(SANDBOX_SUFFIX) ? 'const IMPORT_META=import.meta;' : '';
+        return !file.chunk.name.includes(SANDBOX_SUFFIX) ? "const IMPORT_META=import.meta;" : "";
       },
       raw: true,
     }),
     new CopyPlugin({
       patterns: [
-        {from: 'public', to: ''},
-        {from: 'README.md', to: ''},
-        {from: 'src/snippet.css', to: ''}
-      ]
+        { from: "public", to: "" },
+        { from: "README.md", to: "" },
+        { from: "src/snippet.css", to: "" }
+      ],
     }),
     fastRefresh,
   ].filter(Boolean),
