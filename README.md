@@ -1,4 +1,4 @@
-# RemNote Active Recall
+# Active Recall in Editor
 
 ![Logo](https://raw.githubusercontent.com/browneyedsoul/RemNote-ActiveRecall/main/public/logo.png)
 
