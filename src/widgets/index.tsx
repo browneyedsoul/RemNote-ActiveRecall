@@ -34,11 +34,13 @@ async function onActivate(plugin: ReactRNPlugin) {
     title: "Scope Expander",
     defaultValue: false,
   });
-  plugin.track(async (reactivePlugin) => {
-    const arSetting = await reactivePlugin.settings.getSetting<boolean>("scope");
-    arSetting
-      ? await plugin.app.registerCSS("active-recall-untagged", ARTAGGED)
-      : await plugin.app.registerCSS("active-recall", ARCSS);
+  // unregisterCSS needed
+  await plugin.track(async (reactivePlugin) => {
+    let arSetting = await reactivePlugin.settings.getSetting<boolean>("scope");
+    arSetting === true
+      ? plugin.app.registerCSS("active-recall-untagged", ARTAGGED)
+      : plugin.app.registerCSS("active-recall-untagged", ARCSS); 
+        
   });
 }
 
