@@ -3,7 +3,7 @@
         background-color: white;
         filter: contrast(0%) brightness(1.5);
     }
-    %cloze {
+    %rounded {
         font-weight: 600;
         border-radius: 5px;
     }
@@ -14,7 +14,7 @@
                     span.linear-editor-item.whitespace-pre-wrap {
                         &:not(:hover) {
                             @extend %filter;
-                            @extend %cloze;
+                            @extend %rounded;
                         }
                     }
                 }
@@ -22,17 +22,26 @@
         }
     }
     span[data-linear-editor-text="true"]:has(span.rn-card-delimiter) + span {
-        @extend %cloze;
+        @extend %rounded;
         &:not(:hover) {
             @extend %filter;
         }
     }
     span.only_in_answer {
         > span {
-            @extend %cloze;
+            @extend %rounded;
             &:not(:hover) {
                 @extend %filter;
             }
+        }
+    }
+    span.cloze {
+        @extend %filter;
+        @extend %rounded;
+        &:hover,
+        &:focus-within {
+            filter: unset !important;
+            background: unset;
         }
     }
     span.rem-container--forwards-practice-enabled,
@@ -45,6 +54,7 @@
             &:hover,
             &:focus-within {
                 filter: unset !important;
+                background: unset;
             }
         }
         &:not(:hover) {

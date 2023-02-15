@@ -34,7 +34,7 @@ async function onActivate(plugin: ReactRNPlugin) {
     title: "Scope Expander",
     defaultValue: false,
   });
-  await useTracker(async (reactivePlugin) => {
+  plugin.track(async (reactivePlugin) => {
     const arSetting = await reactivePlugin.settings.getSetting<boolean>("scope");
     arSetting
       ? await plugin.app.registerCSS("active-recall-untagged", ARTAGGED)
