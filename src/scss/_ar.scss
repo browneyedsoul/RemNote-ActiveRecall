@@ -1,6 +1,6 @@
 @mixin ActiveRecall {
     %filter {
-        background-color: #FFF !important;
+        background-color: #FFF;
         filter: contrast(0%) brightness(1.6);
     }
     %rounded {
