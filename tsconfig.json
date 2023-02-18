@@ -10,6 +10,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true
   },
   "ts-node": {
