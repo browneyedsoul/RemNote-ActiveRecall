@@ -38,8 +38,17 @@
     span.cloze {
         @extend %filter;
         @extend %rounded;
-        &:hover,
-        &:focus {
+        &.bold {
+            > span {
+                @extend %filter;
+                @extend %rounded;
+                &:hover {
+                    filter: unset !important;
+                    background: unset;
+                }
+            }
+        }
+        &:hover {
             filter: unset !important;
             background: unset;
         }
