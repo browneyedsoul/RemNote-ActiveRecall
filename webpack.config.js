@@ -51,7 +51,7 @@ const config = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin,
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       templateContent: `
       <body></body>
@@ -86,6 +86,7 @@ const config = {
         { from: "README.md", to: "" },
         { from: "src/snippet.css", to: "" },
         { from: "src/untag.css", to: "" },
+        { from: "src/App.css", to: "" },
       ],
     }),
     fastRefresh,
