@@ -7,6 +7,16 @@
         font-weight: 600;
         border-radius: 5px;
     }
+    %rounded-left {
+        font-weight: 600;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    %rounded-right {
+        font-weight: 600;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
     %list-card {
         span[data-linear-editor-text~="true"]:nth-of-type(3) {
             > span {
@@ -21,10 +31,17 @@
             }
         }
     }
-    span[data-linear-editor-text="true"]:has(span.rn-card-delimiter) + span {
-        @extend %rounded;
-        &:not(:hover) {
-            @extend %filter;
+    span[data-linear-editor-text="true"]:has(span.rn-card-delimiter) {
+        & + span {
+            @extend %rounded-left;
+        }
+        & ~ span  {
+            &:not(:hover) {
+                @extend %filter;
+            }
+            &:last-child {
+                @extend %rounded-right;
+            }
         }
     }
     span.only_in_answer {
